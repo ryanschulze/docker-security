@@ -7,4 +7,6 @@ RUN apk add --no-cache git && \
     git clone -b community --single-branch https://github.com/robocoder/rips-scanner.git ./ && \
     mkdir /code && \
     sed -i "s/'BASEDIR', ''/'BASEDIR', '\/code\/'/" /app/config/general.php && \
+    printf "\n<Directory \"/code\">\n\tAllowOverride All\n</Directory>\n" > /etc/apache2/conf.d/rips.conf && \
     echo "[i] Success"
+
